@@ -27,8 +27,33 @@
 <body>
 
   <!-- ==========================================================================
-       HEADER & NAVIGATION BAR
+       TOPBAR & MAIN NAVIGATION
        ========================================================================== -->
+  <div class="header-topbar">
+    <div class="container topbar-container">
+      <div class="topbar-left">
+        <span class="topbar-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          ISO 9001:2015 CERTIFIED | RDSO SPEC COMPLIANT
+        </span>
+        <span class="topbar-loc">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Facility: New Delhi / NCR • Pan-India Mobilization
+        </span>
+      </div>
+      <div class="topbar-right">
+        <a href="tel:+919876543210" class="topbar-item topbar-emergency">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          24/7 Breakdown Hotline: +91 98765 43210
+        </a>
+        <a href="mailto:contact@techinglobal.com" class="topbar-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          contact@techinglobal.com
+        </a>
+      </div>
+    </div>
+  </div>
+
   <header class="site-header" id="navbar">
     <div class="container header-container">
       <a href="#" class="brand-logo" aria-label="Techin Global Home">
@@ -47,12 +72,54 @@
       <!-- Desktop Nav -->
       <nav class="nav-links" id="nav-menu">
         <a href="#about" class="nav-link">About</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#railways" class="nav-link railway-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="m8 19-2 3"/><path d="m16 19 2 3"/></svg>
-          Railways <span class="nav-badge-new">Focus</span>
-        </a>
-        <a href="#estimator" class="nav-link">Quote Estimator</a>
+        
+        <!-- Services Mega Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#services" class="nav-link dropdown-toggle">
+            <span>Services</span>
+            <svg class="dropdown-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#services" class="dropdown-link" onclick="document.querySelector('[data-filter=\'troubleshooting\']')?.click()">
+              <div class="dropdown-icon-box" style="background: rgba(2, 132, 199, 0.1); color: var(--accent-cyan);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <div>
+                <span class="dropdown-link-title">Troubleshooting & Repair</span>
+                <span class="dropdown-link-desc">Diagnostics, Pressure/Flow, Panels & Motor Controls</span>
+              </div>
+            </a>
+            <a href="#services" class="dropdown-link" onclick="document.querySelector('[data-filter=\'refurbishment\']')?.click()">
+              <div class="dropdown-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              </div>
+              <div>
+                <span class="dropdown-link-title">Refurbishment & Overhauling</span>
+                <span class="dropdown-link-desc">Cylinder Honing, Pumps, Motors, Gearboxes & Seal Kits</span>
+              </div>
+            </a>
+            <a href="#railways" class="dropdown-link">
+              <div class="dropdown-icon-box railway">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/></svg>
+              </div>
+              <div>
+                <span class="dropdown-link-title">Indian Railways Division</span>
+                <span class="dropdown-link-desc">Bogie Lifting Jacks, Wheel Presses & Loco Shed Rigs</span>
+              </div>
+            </a>
+            <a href="#estimator" class="dropdown-link">
+              <div class="dropdown-icon-box" style="background: rgba(234, 88, 12, 0.1); color: var(--accent-amber);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+              </div>
+              <div>
+                <span class="dropdown-link-title">Overhaul Quote Estimator</span>
+                <span class="dropdown-link-desc">Interactive protocol calculator & bay SLA</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="#estimator" class="nav-link">Estimator</a>
         <a href="#why-us" class="nav-link">Why Us</a>
         <a href="#process" class="nav-link">Process</a>
         <a href="#gallery" class="nav-link">Showcase</a>
@@ -61,6 +128,9 @@
 
       <!-- Header Actions -->
       <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
         <a href="tel:+919876543210" class="btn-header-call">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>+91 98765 43210</span>
@@ -70,7 +140,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <button class="mobile-toggle" aria-label="Toggle mobile menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
@@ -157,16 +227,6 @@
           <div class="floating-info">
             <h4>500+ Overhauls</h4>
             <p>Certified Zero-Leakage Record</p>
-          </div>
-        </div>
-
-        <div class="floating-stat-box stat-right">
-          <div class="floating-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/></svg>
-          </div>
-          <div class="floating-info">
-            <h4>Indian Railways</h4>
-            <p>50+ Workshops & Sheds</p>
           </div>
         </div>
       </div>
@@ -274,236 +334,459 @@
   </section>
 
   <!-- ==========================================================================
-       CORE SERVICES OVERVIEW
+       CORE SERVICES & CAPABILITIES
+       Pillar 1: Troubleshooting & Repair
+       Pillar 2: Refurbishment & Overhauling
        ========================================================================== -->
   <section class="section" id="services">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">CORE CAPABILITIES</div>
-        <h2 class="section-title">General Industrial <span class="highlight-amber">Hydraulic Servicing</span></h2>
+        <div class="section-tag">ENGINEERING SERVICE PILLARS</div>
+        <h2 class="section-title">Troubleshooting, Repair & <span class="highlight-amber">Precision Overhauling</span></h2>
         <p class="section-subtitle">
-          Comprehensive teardown, re-machining, seal kit upgrades, and computerized dynamic pressure testing for all makes and models of industrial hydraulics.
+          From advanced electro-hydraulic fault diagnosis and computerized pressure/flow analysis to full component refurbishment, cylinder honing, and 700-Bar dynamic proof testing.
         </p>
       </div>
 
       <!-- Filter Tabs -->
       <div class="services-filter-bar">
-        <button class="filter-btn active" data-filter="all">All Equipment</button>
-        <button class="filter-btn" data-filter="pumps-motors">Motors & Pumps</button>
-        <button class="filter-btn" data-filter="cylinders-presses">Cylinders & Presses</button>
-        <button class="filter-btn" data-filter="valves-actuators">Valves & Actuators</button>
-        <button class="filter-btn" data-filter="heavy-systems">Heavy Machinery & Packs</button>
+        <button type="button" class="filter-btn active" data-filter="all" onclick="filterServices('all')">
+          <span>All Capabilities (27 Services)</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="troubleshooting" onclick="filterServices('troubleshooting')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <span>Troubleshooting & Repair</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="refurbishment" onclick="filterServices('refurbishment')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          <span>Refurbishment & Overhauling</span>
+        </button>
+        <button type="button" class="filter-btn railway-tab" data-filter="railways" onclick="filterServices('railways')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/></svg>
+          <span>Railways Workshop Division</span>
+        </button>
       </div>
 
       <!-- Services Grid -->
       <div class="services-grid">
-        <!-- Service Card 1 -->
-        <div class="service-card" data-category="pumps-motors">
+
+        <!-- ==================== PILLAR 1: TROUBLESHOOTING & REPAIR ==================== -->
+        
+        <!-- Card 1: Multi-Discipline Fault Diagnosis -->
+        <div class="service-card pillar-repair" data-category="troubleshooting" data-pillar="troubleshooting">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a4.5 4.5 0 0 0 0 9 4.5 4.5 0 0 1 0 9 4.5 4.5 0 0 0 0-9 4.5 4.5 0 0 1 0-9z"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </div>
-            <span class="service-capacity-tag">Up to 450 Bar</span>
+            <span class="service-capacity-tag">Root Cause NDT</span>
           </div>
-          <h3>Hydraulic Motors</h3>
-          <p>Precision overhaul of heavy-duty radial piston, axial piston, and gerotor-type hydraulic motors. Barrel face lapping, piston ring renewals, and shaft alignment.</p>
+          <h3>Mechanical, Hydraulic & Electrical Fault Diagnosis</h3>
+          <p>End-to-end diagnostic troubleshooting across complex electro-hydraulic industrial systems, plant machinery, and railway workshop installations to identify failures before costly downtime occurs.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Radial piston & bent-axis motors</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gerotor & orbital drives</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Rexroth, Staffa, Danfoss, Eaton</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Mechanical Diagnostics:</strong> Vibration profiling, shaft alignment & bearing wear analysis</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Hydraulic Diagnostics:</strong> Cavitation, aeration detection & thermal spike resolution</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Electrical Diagnostics:</strong> Insulation resistance, coil impedance & signal loss checks</span></li>
           </ul>
           <div class="service-card-footer">
             <a href="#contact" class="service-action-link">
-              <span>Book Motor Overhaul</span>
+              <span>Book System Diagnosis</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Service Card 2 -->
-        <div class="service-card" data-category="pumps-motors">
+        <!-- Card 2: Pressure & Flow Troubleshooting -->
+        <div class="service-card pillar-repair" data-category="troubleshooting" data-pillar="troubleshooting">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M10.4 10.4 6.4 14.4"/><path d="M17.6 6.4l-4 4"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </div>
             <span class="service-capacity-tag">Flow up to 800 LPM</span>
           </div>
-          <h3>Hydraulic Pumps</h3>
-          <p>Complete reconditioning of high-pressure gear pumps, vane pumps, and variable displacement swashplate piston pumps. Cam ring re-grinding and port plate resurfacing.</p>
+          <h3>Hydraulic Pressure & Flow Problems</h3>
+          <p>Rapid identification and resolution of system pressure losses, flow starvation, erratic actuator speeds, thermal overheating, and valve bypass across high-pressure industrial lines.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Variable displacement axial piston pumps</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Industrial gear & cartridge vane pumps</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Flow & volumetric efficiency bench test</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Dynamic Profiling:</strong> In-line digital pressure transducer and flow rate profiling</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Internal Slippage:</strong> Relief valve bypass, drift diagnosis & spool seal checks</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Pulsation Damping:</strong> Accumulator nitrogen pre-charge & flow regulator tuning</span></li>
           </ul>
           <div class="service-card-footer">
             <a href="#contact" class="service-action-link">
-              <span>Book Pump Servicing</span>
+              <span>Resolve Pressure Drop</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Service Card 3 -->
-        <div class="service-card" data-category="cylinders-presses">
+        <!-- Card 3: Pump & Motor Performance Issues -->
+        <div class="service-card pillar-repair" data-category="troubleshooting" data-pillar="troubleshooting">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 7v10"/><path d="M18 7v10"/><path d="M2 12h20"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a4.5 4.5 0 0 0 0 9 4.5 4.5 0 0 1 0 9 4.5 4.5 0 0 0 0-9 4.5 4.5 0 0 1 0-9z"/></svg>
             </div>
-            <span class="service-capacity-tag">Bores up to 600mm</span>
+            <span class="service-capacity-tag">Bench Tested 700 Bar</span>
           </div>
-          <h3>Hydraulic Cylinders</h3>
-          <p>Single-acting, double-acting, telescopic, and high-tonnage mill type cylinders. Hard chrome plating of piston rods, tube honing, gland bush fabrication, and zero-leak poly-pack sealing.</p>
+          <h3>Pump & Motor Performance Issues</h3>
+          <p>Specialized performance benchmarking for axial piston, radial piston, gerotor, and vane pumps/motors experiencing loss of torque, casing overheating, excessive noise, or volumetric decline.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Piston rod straightening & re-chroming</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Barrel honing & custom seal kits</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydrostatic holding pressure testing</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Efficiency Benchmarking:</strong> Volumetric drop & mechanical efficiency analysis</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Internal Geometry:</strong> Swashplate angle, barrel port face & piston shoe wear check</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Acoustic Analysis:</strong> Case drain flow metering & cavitation acoustic detection</span></li>
           </ul>
           <div class="service-card-footer">
             <a href="#contact" class="service-action-link">
-              <span>Book Cylinder Repair</span>
+              <span>Inspect Pump / Motor</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Service Card 4 -->
-        <div class="service-card" data-category="heavy-systems">
+        <!-- Card 4: Gearbox & Drive Problems -->
+        <div class="service-card pillar-repair" data-category="troubleshooting" data-pillar="troubleshooting">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v10H7z"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </div>
-            <span class="service-capacity-tag">Custom Built HPUs</span>
+            <span class="service-capacity-tag">High Torque Drives</span>
           </div>
-          <h3>Power Packs (HPU)</h3>
-          <p>Turnkey maintenance, retrofitting, and custom fabrication of Hydraulic Power Units. Reservoir chemical cleaning, cooler servicing, accumulator charging, and manifold re-sealing.</p>
+          <h3>Gearbox & Drive Problems</h3>
+          <p>Diagnostic evaluation of planetary drives, worm drives, helical reduction gearboxes, and slewing mechanisms. We eliminate gear tooth chatter, excessive backlash, and bearing rumble.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Integrated manifold blocks</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Nitrogen accumulator bladder charging</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Complete electrical control panel integration</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Gear Inspection:</strong> Backlash, tooth root stress profiling & pitting analysis</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Shaft Alignment:</strong> Total indicated runout (TIR) & dynamic balancing checks</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Oil Tribology:</strong> Spectroscopic metallic particulate & thermal breakdown analysis</span></li>
           </ul>
           <div class="service-card-footer">
             <a href="#contact" class="service-action-link">
-              <span>Book HPU Overhaul</span>
+              <span>Diagnose Drive Problem</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Service Card 5 -->
-        <div class="service-card" data-category="valves-actuators">
+        <!-- Card 5: Electrical Control Panels & Control Systems -->
+        <div class="service-card pillar-repair" data-category="troubleshooting" data-pillar="troubleshooting">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="2 6 8 12 2 18 2 6"/><polygon points="22 6 16 12 22 18 22 6"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v10H7z"/><path d="M3 12h4"/><path d="M17 12h4"/></svg>
+            </div>
+            <span class="service-capacity-tag">Automation & Logic</span>
+          </div>
+          <h3>Electrical Control Panels & Control Systems</h3>
+          <p>Troubleshooting, rewiring, and modernization of integrated electrical panels, PLC sequencing cards, and automated control cabinets that direct hydraulic power units and synchronized jacks.</p>
+          <ul class="service-sublist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Control Panels:</strong> Busbar inspection, thermal imaging & terminal continuity testing</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Control Systems:</strong> Proportional valve amplifier tuning & automated loop calibration</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Safety Interlocks:</strong> Circuit verification, relay card repairs & PLC sequencing checks</span></li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#contact" class="service-action-link">
+              <span>Service Control Panel</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 6: Sensors, Switches, Solenoids & Motor Starters -->
+        <div class="service-card pillar-repair" data-category="troubleshooting" data-pillar="troubleshooting">
+          <div class="service-card-header">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="service-capacity-tag">Precision Instruments</span>
+          </div>
+          <h3>Sensors, Switches, Solenoids & Starters</h3>
+          <p>Component-level diagnosis and calibration for feedback instruments and electrical switchgear powering industrial hydraulic power packs and high-tonnage lifting systems.</p>
+          <ul class="service-sublist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Sensors & Switches:</strong> Pressure transducers, limit & float switch calibration</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Solenoid Valves:</strong> Coil impedance, stroke timing & seated response validation</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Motor Starters:</strong> DOL, Star-Delta & Soft Starter contactor overhaul</span></li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#contact" class="service-action-link">
+              <span>Calibrate Electricals</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ==================== PILLAR 2: REFURBISHMENT & OVERHAULING ==================== -->
+
+        <!-- Card 7: Hydraulic Cylinder & Piston Refurbishment -->
+        <div class="service-card pillar-refurb" data-category="refurbishment" data-pillar="refurbishment">
+          <div class="service-card-header">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 7v10"/><path d="M18 7v10"/><path d="M2 12h20"/></svg>
+            </div>
+            <span class="service-capacity-tag">Bores to 600mm</span>
+          </div>
+          <h3>Hydraulic Cylinder & Piston Refurbishment</h3>
+          <p>Full mechanical rebuild and renewal of single-acting, double-acting, telescopic, and mill-type hydraulic cylinders. Every unit undergoes precision dimensional metrology and gland re-facing.</p>
+          <ul class="service-sublist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Cylinder Refurbishment:</strong> Heavy barrel boring, gland re-facing & head reconditioning</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Piston Rebuilding:</strong> Piston crown remanufacturing & phosphor-bronze wear ring refit</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Proof Testing:</strong> Full static & dynamic hydrostatic proof testing up to 700 Bar</span></li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#contact" class="service-action-link">
+              <span>Book Cylinder Refurbishment</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 8: Cylinder Honing & Rod Reconditioning -->
+        <div class="service-card pillar-refurb" data-category="refurbishment" data-pillar="refurbishment">
+          <div class="service-card-header">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="7"/></svg>
+            </div>
+            <span class="service-capacity-tag">Ra 0.2µm Finish</span>
+          </div>
+          <h3>Cylinder Honing & Piston Rod Reconditioning</h3>
+          <p>State-of-the-art horizontal cylinder honing and hard-chrome rod reconditioning. We eliminate deep scoring, ovality, pitting, and taper, returning barrel surfaces to exact micron tolerances.</p>
+          <ul class="service-sublist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Cylinder Honing:</strong> Cross-hatch micro-geometry honing for optimal seal lubrication</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Rod Reconditioning:</strong> High-precision straightening, grinding & superfinishing</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Hard Chrome Plating:</strong> Micro-crack hard chrome electroplating (50+ Micron thickness)</span></li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#contact" class="service-action-link">
+              <span>Book Honing & Re-chroming</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 9: Seal Kit & O-Ring Renewal -->
+        <div class="service-card pillar-refurb" data-category="refurbishment" data-pillar="refurbishment">
+          <div class="service-card-header">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/></svg>
+            </div>
+            <span class="service-capacity-tag">Zero-Leak Guarantee</span>
+          </div>
+          <h3>Seal Kit Replacement & Hydraulic Seal Renewal</h3>
+          <p>Complete replacement of hydraulic packings, wiper seals, gland chevron sets, mechanical seals, and O-rings using aerospace & heavy-industrial grade compounds resistant to 700 Bar.</p>
+          <ul class="service-sublist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Seal Kit Renewal:</strong> Poly-pack, chevron gland sets & multi-lip piston packings</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Mechanical Seals:</strong> Silicon carbide, tungsten carbide & carbon face lapping</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>O-Ring Engineering:</strong> High-temperature Viton, PTFE backup rings & NBR-90</span></li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#contact" class="service-action-link">
+              <span>Order Seal Kit Renewal</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 10: Hydraulic Pump & Motor Overhauling -->
+        <div class="service-card pillar-refurb" data-category="refurbishment" data-pillar="refurbishment">
+          <div class="service-card-header">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M10.4 10.4 6.4 14.4"/><path d="M17.6 6.4l-4 4"/></svg>
+            </div>
+            <span class="service-capacity-tag">Flow to 800 LPM</span>
+          </div>
+          <h3>Hydraulic Pump & Motor Overhauling</h3>
+          <p>Factory-grade overhauling of high-pressure piston pumps, cartridge vane pumps, gear pumps, and hydraulic drive motors. Barrel face lapping, swashplate grinding, and dynamic flow rig testing.</p>
+          <ul class="service-sublist">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Pump Overhauling:</strong> Rexroth, Vickers, Parker, Danfoss axial and radial piston units</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Motor Overhauling:</strong> High-torque low-speed Staffa, Poclain & Eaton orbital drives</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Precision Lapping:</strong> Barrel port plate resurfacing & valve plate micro-finishing</span></li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#contact" class="service-action-link">
+              <span>Book Pump / Motor Overhaul</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 11: Valve Refurbishment -->
+        <div class="service-card pillar-refurb" data-category="refurbishment" data-pillar="refurbishment">
+          <div class="service-card-header">
+            <div class="service-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="2 6 8 12 2 18 2 6"/><polygon points="22 6 16 12 22 18 22 6"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             </div>
             <span class="service-capacity-tag">Micron Tolerances</span>
           </div>
-          <h3>Valves & Control Manifolds</h3>
-          <p>Diagnostic testing and calibration of directional control valves, pilot-operated relief valves, counter-balance valves, flow regulators, and high-precision proportional/servo valves.</p>
+          <h3>Hydraulic Valve Refurbishment & Calibration</h3>
+          <p>Micro-lapping, clearance optimization, and static/dynamic pressure testing for directional control valves, pilot relief valves, counterbalance valves, and high-precision servo/proportional valves.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Spool micro-lapping & internal clearance check</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Proportional amplifier & solenoid coil testing</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero-drift pressure setting calibration</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Valve Refurbishment:</strong> Spool re-chroming, precision bore honing & sleeve fitting</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Proportional Tuning:</strong> Electronic amplifier & linear variable feedback calibration</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Drift Benchmarking:</strong> Zero-leakage cracking pressure and reseat benchmarking</span></li>
           </ul>
           <div class="service-card-footer">
             <a href="#contact" class="service-action-link">
-              <span>Book Valve Calibration</span>
+              <span>Book Valve Refurbishment</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Service Card 6 -->
-        <div class="service-card" data-category="cylinders-presses">
+        <!-- Card 12: Gearbox, Reduction Gear & Shaft Overhauling -->
+        <div class="service-card pillar-refurb" data-category="refurbishment" data-pillar="refurbishment">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="6" rx="1"/><rect x="4" y="16" width="16" height="6" rx="1"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="6" rx="1"/><rect x="4" y="16" width="16" height="6" rx="1"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
             </div>
-            <span class="service-capacity-tag">Up to 1000 Tons</span>
+            <span class="service-capacity-tag">Heavy Reduction</span>
           </div>
-          <h3>Hydraulic Presses & Heavy Jacks</h3>
-          <p>Overhauling of heavy industrial forging presses, stamping presses, C-frame workshop presses, synchronized hydraulic jacks, bottle jacks, and structural lifting rams.</p>
+          <h3>Gearbox & Shaft Overhauling</h3>
+          <p>Heavy overhaul of planetary, spur, helical, and worm reduction gearboxes. Includes complete bearing/bushing replacement, precision shaft reconditioning, and tooth contact pattern verification.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Main ram seal packing & column bushing</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Platen parallelism and tonnage verification</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Multi-stage synchronized jack arrays</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Gearbox Rebuild:</strong> Planetary, helical, spur & worm reduction box teardown</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Bearings & Bushes:</strong> SKF / FAG precision taper roller bearings & bronze bushes</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Shaft Reconditioning:</strong> Metal spraying, hard turning & keyway repair</span></li>
           </ul>
           <div class="service-card-footer">
             <a href="#contact" class="service-action-link">
-              <span>Book Press Overhaul</span>
+              <span>Book Gearbox Overhaul</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Service Card 7 -->
-        <div class="service-card" data-category="heavy-systems">
+        <!-- ==================== PILLAR 3: RAILWAYS WORKSHOP DIVISION ==================== -->
+
+        <!-- Card 13: Synchronized Bogie Lifting Jack Overhaul -->
+        <div class="service-card pillar-railways" data-category="railways" data-pillar="railways">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17h20"/><path d="M6 17V7l6-4 6 4v10"/><path d="M12 3v14"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/></svg>
             </div>
-            <span class="service-capacity-tag">Mobile & Industrial</span>
+            <span class="service-capacity-tag">RDSO Standard</span>
           </div>
-          <h3>Cranes & Earthmoving Systems</h3>
-          <p>Servicing hydraulic drive systems for EOT cranes, mobile hydraulic cranes, forklifts, heavy excavators, wheel loaders, JCB earthmovers, and injection molding machinery.</p>
+          <h3>Synchronized Bogie Lifting Jack Systems</h3>
+          <p>Comprehensive servicing of 4-post and 8-post synchronized electric & hydraulic bogie lifting jacks used in Indian Railways coaching depots and loco sheds. Micro-level synchronization testing.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Boom hoist & slew motor servicing</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydrostatic transmission (HST) overhauling</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Injection molding clamping cylinder rebuilds</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Synchronized Jacks:</strong> 4-post & 8-post synchronized lifting column overhauls</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Mechanical Drive & Ram:</strong> Heavy trapezoidal lead-screw & hydraulic ram renewal</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Safety Interlocks:</strong> Height leveling sensors & failsafe mechanical pawl tests</span></li>
           </ul>
           <div class="service-card-footer">
-            <a href="#contact" class="service-action-link">
-              <span>Book Machinery System</span>
+            <a href="#railways" class="service-action-link">
+              <span>View Railway Division</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Service Card 8 -->
-        <div class="service-card" data-category="valves-actuators">
+        <!-- Card 14: Railway Wheel-Axle Mounting Press Servicing -->
+        <div class="service-card pillar-railways" data-category="railways" data-pillar="railways">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="17" r="4"/><circle cx="17" cy="17" r="4"/><path d="M7 17h10"/><path d="M9 13V5h6v8"/></svg>
             </div>
-            <span class="service-capacity-tag">High Torque</span>
+            <span class="service-capacity-tag">300T – 500T Heavy Press</span>
           </div>
-          <h3>Rotary Actuators & Gearboxes</h3>
-          <p>Rack-and-pinion and vane-type hydraulic rotary actuators for damper controls, industrial valves, and furnace tilt mechanisms. Industrial planetary and bevel gearbox reconditioning.</p>
+          <h3>Railway Wheel-Axle Press Hydraulic Units</h3>
+          <p>Specialized overhaul and calibration of 300T–500T wheel mounting and demounting presses across zonal wheel workshops. Complete proportional cylinder rebuild and load-cell calibration.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> High-torque rack & pinion actuators</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Heavy reduction gearbox gear-tooth inspection</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero-backlash positioning calibration</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Heavy Press Rebuild:</strong> 300T–500T wheel mounting cylinder overhauls</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Proportional Control:</strong> Precision load-cell calibration & automated graph logs</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Pressure Manifolds:</strong> High-pressure holding valves & anti-shock manifolds</span></li>
           </ul>
           <div class="service-card-footer">
-            <a href="#contact" class="service-action-link">
-              <span>Book Actuator Service</span>
+            <a href="#railways" class="service-action-link">
+              <span>View Railway Division</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Service Card 9 -->
-        <div class="service-card" data-category="valves-actuators">
+        <!-- Card 15: Locomotive Shed Power Packs & Tooling -->
+        <div class="service-card pillar-railways" data-category="railways" data-pillar="railways">
           <div class="service-card-header">
             <div class="service-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
             </div>
-            <span class="service-capacity-tag">DIN / SAE Standard</span>
+            <span class="service-capacity-tag">700 Bar Mobile Bay</span>
           </div>
-          <h3>Hoses, Fittings & Seal Kits</h3>
-          <p>Ultra-high-pressure hydraulic hose assembly fabrication, multi-spiral steel wire reinforced hoses, precision flange fittings, and customized fluorocarbon / polyurethane seal kits.</p>
+          <h3>Locomotive Shed Hydraulic Power Units & Tooling</h3>
+          <p>On-site servicing and mobile workshop rigs for electric & diesel locomotive maintenance sheds. 700-Bar hydraulic flushing units, rail maintenance hydraulic cylinders, and test benches.</p>
           <ul class="service-sublist">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 4-spiral & 6-spiral hydraulic hose crimping</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> High-temperature Viton & PTFE seals</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Burst pressure tested & batch tagged</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Shed Power Units:</strong> High-pressure 700-Bar flushing carts & test bench servicing</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Track Tooling:</strong> Rail disc cutters, rail benders & hydraulic weld shearers</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Fleet Maintenance:</strong> Auxiliary brake release power packs & pantograph cylinders</span></li>
           </ul>
           <div class="service-card-footer">
-            <a href="#contact" class="service-action-link">
-              <span>Order Hose & Seal Kit</span>
+            <a href="#railways" class="service-action-link">
+              <span>View Railway Division</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==========================================================================
+           FULL TECHNICAL CAPABILITIES MATRIX (ALL 27 EXACT CLIENT SERVICES)
+           ========================================================================== -->
+      <div class="capabilities-matrix-wrap" id="services-matrix">
+        <div class="matrix-header">
+          <div>
+            <h3>Comprehensive Engineering Service Matrix</h3>
+            <p>Direct breakdown of our certified field & workshop servicing competencies.</p>
+          </div>
+          <div class="section-tag" style="margin-bottom: 0;">
+            <span>100% OEM SPECIFICATION ADHERENCE</span>
+          </div>
+        </div>
+
+        <div class="matrix-pillars-grid">
+          <!-- Pillar 1 Checklist -->
+          <div class="matrix-pillar-box">
+            <h4 class="matrix-pillar-title repair-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              Troubleshooting & Repair (12 Core Specializations)
+            </h4>
+            <div class="matrix-list">
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Mechanical Fault Diagnosis</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydraulic Fault Diagnosis</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Electrical Fault Diagnosis</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydraulic Pressure & Flow Problems</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Pump & Motor Performance Issues</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gearbox & Drive Problems</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Electrical Control Panels</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Sensors & Switches</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Solenoid Valves & Controls</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Contactors & Relays</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Motor Starters</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Control Systems</div>
+            </div>
+          </div>
+
+          <!-- Pillar 2 Checklist -->
+          <div class="matrix-pillar-box">
+            <h4 class="matrix-pillar-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              Refurbishment & Overhauling (15 Core Specializations)
+            </h4>
+            <div class="matrix-list">
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydraulic Cylinder Refurbishment</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydraulic Piston Refurbishment</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Cylinder Honing</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Piston & Rod Reconditioning</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Seal Kit Replacement</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydraulic Seal Renewal</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydraulic Pump Overhauling</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hydraulic Motor Overhauling</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Valve Refurbishment</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gearbox Overhauling</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Reduction Gear Overhauling</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Bearing & Bush Replacement</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Shaft Reconditioning</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Mechanical Seal Replacement</div>
+              <div class="matrix-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> O-Ring & Seal Replacement</div>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -797,35 +1080,38 @@
           <p class="calc-subtitle">Instant calibration based on workshop bay availability & RDSO testing matrices.</p>
 
           <div class="calc-group">
-            <label for="calc-equipment">Select Component / Equipment Category</label>
-            <select id="calc-equipment" class="calc-select">
-              <option value="axial-pump">Variable Axial Piston Pump (Rexroth / Eaton / Parker)</option>
-              <option value="radial-motor">Heavy Radial Piston Hydraulic Motor</option>
-              <option value="large-cylinder">Double-Acting Heavy Hydraulic Cylinder (Ram > 200mm)</option>
-              <option value="power-pack">Hydraulic Power Unit (HPU) / Integrated Manifold</option>
-              <option value="railway-jacks">Railway Bogie Lifting Jacks / Synchronized 4-Post Rig</option>
-              <option value="railway-wheelpress">Railway Wheel-Axle Press Mounting Hydraulic System</option>
-              <option value="railway-rerailing">Railway Re-Railing Lightweight Hydraulic Set</option>
-              <option value="heavy-press">Industrial Forging / Stamping Hydraulic Press (> 500T)</option>
+            <label for="calc-equipment">Select Equipment / Service Category</label>
+            <select id="calc-equipment" class="calc-select" onchange="calculateQuote()">
+              <option value="cylinder-honing">Hydraulic Cylinder & Piston Refurbishment / Honing</option>
+              <option value="axial-pump">Hydraulic Pump & Motor Overhauling (Rexroth / Eaton / Parker)</option>
+              <option value="fault-diagnosis">Mechanical, Hydraulic & Electrical Fault Diagnosis</option>
+              <option value="pressure-flow">Hydraulic Pressure & Flow Problem Solving</option>
+              <option value="control-panels">Electrical Control Panels, Sensors, Starters & Solenoids</option>
+              <option value="gearbox-drive">Gearbox & Reduction Drive Overhauling / Shaft Reconditioning</option>
+              <option value="seal-kit">Seal Kit Replacement & Hydraulic Seal Renewal (Viton / PTFE)</option>
+              <option value="power-pack">Hydraulic Power Unit (HPU) / Integrated Manifold Block</option>
+              <option value="railway-jacks">Indian Railways Bogie Lifting Jacks / Synchronized 4-Post Rig</option>
+              <option value="railway-wheelpress">Indian Railways Wheel-Axle Press Hydraulic System</option>
+              <option value="heavy-press">Heavy Industrial Forging / Stamping Hydraulic Press (> 500T)</option>
             </select>
           </div>
 
           <div class="calc-group">
             <label>Select Required Service Scope</label>
             <div class="calc-chips">
-              <button class="calc-chip active" data-service="overhaul">Complete Overhaul & Rebuild</button>
-              <button class="calc-chip" data-service="inspection">NDT & Diagnostic Inspection</button>
-              <button class="calc-chip" data-service="emergency">Priority 24-Hr Emergency Bay</button>
-              <button class="calc-chip" data-service="amc">Annual Maintenance Contract (AMC)</button>
+              <button type="button" class="calc-chip calc-scope-chip active" data-service="overhaul" onclick="setCalcScope(this, 'overhaul')">Complete Refurbishment & Rebuild</button>
+              <button type="button" class="calc-chip calc-scope-chip" data-service="diagnostic" onclick="setCalcScope(this, 'diagnostic')">Fault Finding & Diagnostic Inspection</button>
+              <button type="button" class="calc-chip calc-scope-chip" data-service="emergency" onclick="setCalcScope(this, 'emergency')">Priority 24-Hr Emergency Bay</button>
+              <button type="button" class="calc-chip calc-scope-chip" data-service="amc" onclick="setCalcScope(this, 'amc')">Annual Maintenance Contract (AMC)</button>
             </div>
           </div>
 
           <div class="calc-group">
             <label>Pressure Testing Requirement</label>
             <div class="calc-chips">
-              <button class="calc-chip active">Standard Pressure (250 Bar)</button>
-              <button class="calc-chip">High Pressure (450 Bar)</button>
-              <button class="calc-chip">Ultra-High Pressure (700 Bar / 10K PSI)</button>
+              <button type="button" class="calc-chip calc-pressure-chip active" data-pressure="250" onclick="setCalcPressure(this, '250')">Standard Pressure (250 Bar)</button>
+              <button type="button" class="calc-chip calc-pressure-chip" data-pressure="450" onclick="setCalcPressure(this, '450')">High Pressure (450 Bar)</button>
+              <button type="button" class="calc-chip calc-pressure-chip" data-pressure="700" onclick="setCalcPressure(this, '700')">Ultra-High Pressure (700 Bar / 10K PSI)</button>
             </div>
           </div>
         </div>
@@ -835,21 +1121,30 @@
           <div>
             <div class="calc-result-header">
               <h4>Estimated Service Protocol</h4>
-              <p style="font-size: 0.8rem; color: var(--text-muted);">Dynamic Testing Rig Allocation</p>
+              <p style="font-size: 0.8rem; color: #94a3b8;">Dynamic Testing Rig Allocation & Quotation</p>
+            </div>
+
+            <!-- Estimated Cost Bracket -->
+            <div class="calc-estimate-box" style="margin-bottom: 16px;">
+              <div class="estimate-label">Estimated Service Cost Bracket</div>
+              <div class="estimate-price-value" id="calc-price-est" style="font-size: 1.85rem; font-weight: 800; color: var(--accent-amber); margin-top: 4px; font-family: var(--font-heading); letter-spacing: -0.02em;">
+                ₹28,000 – ₹55,000
+              </div>
+              <div class="estimate-sub" style="font-size: 0.76rem; color: #94a3b8; margin-top: 3px;">*Ex-works estimate based on genuine OEM seals & proof testing</div>
             </div>
 
             <div class="calc-estimate-box">
-              <div class="estimate-label">Service Classification</div>
-              <div class="estimate-value" id="calc-price-est" style="font-size: 1.35rem; margin-top: 6px;">
-                Complete Rebuild, Lapping & Pressure Proofing
+              <div class="estimate-label">Testing & Rebuild Protocol</div>
+              <div class="estimate-value" id="calc-protocol-est" style="font-size: 1.02rem; margin-top: 5px; font-weight: 600; color: #f8fafc; line-height: 1.45;">
+                Precision Teardown, Honing/Lapping & 250-Bar Proofing
               </div>
             </div>
 
-            <div class="estimate-timeline">
+            <div class="estimate-timeline" style="margin-top: 18px;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               <div>
-                <strong style="display: block; font-size: 0.85rem;">Estimated Workshop Turnaround:</strong>
-                <span id="calc-time-est" style="color: var(--accent-amber); font-weight: 700;">3 to 5 Working Days</span>
+                <strong style="display: block; font-size: 0.82rem; color: #cbd5e1;">Estimated Workshop Turnaround:</strong>
+                <span id="calc-time-est" style="color: var(--accent-amber); font-weight: 700; font-size: 0.95rem;">3 to 5 Working Days</span>
               </div>
             </div>
           </div>
@@ -1379,14 +1674,14 @@
         </div>
 
         <div class="footer-col">
-          <h4>Industrial Services</h4>
+          <h4>Core Specializations</h4>
           <ul class="footer-links">
-            <li><a href="#services">Hydraulic Motors</a></li>
-            <li><a href="#services">Hydraulic Pumps & Vanes</a></li>
-            <li><a href="#services">High-Tonnage Cylinders</a></li>
-            <li><a href="#services">Custom Power Units (HPU)</a></li>
-            <li><a href="#services">Forging & Stamping Presses</a></li>
-            <li><a href="#services">Directional & Servo Valves</a></li>
+            <li><a href="#services" onclick="document.querySelector('[data-filter=\'troubleshooting\']')?.click()">Mechanical & Hydraulic Faults</a></li>
+            <li><a href="#services" onclick="document.querySelector('[data-filter=\'troubleshooting\']')?.click()">Control Panels & Motor Starters</a></li>
+            <li><a href="#services" onclick="document.querySelector('[data-filter=\'refurbishment\']')?.click()">Cylinder Honing & Reconditioning</a></li>
+            <li><a href="#services" onclick="document.querySelector('[data-filter=\'refurbishment\']')?.click()">Pump & Motor Overhauling</a></li>
+            <li><a href="#services" onclick="document.querySelector('[data-filter=\'refurbishment\']')?.click()">Gearbox & Reduction Drives</a></li>
+            <li><a href="#services" onclick="document.querySelector('[data-filter=\'refurbishment\']')?.click()">Hydraulic & Mechanical Seal Kits</a></li>
           </ul>
         </div>
 
@@ -1446,6 +1741,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260917_03"></script>
 </body>
 </html>

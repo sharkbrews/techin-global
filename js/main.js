@@ -1,22 +1,63 @@
 /**
  * TECHIN GLOBAL HYDRAULICS AND ENGINEERING - INTERACTIVE ENGINE
- * High-performance vanilla JS modules for animations, calculators, and UI interactions
+ * High-performance vanilla JS modules for animations, calculators, filters, and UI interactions
+ * Light-theme first with theme switcher support
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  initHeroCanvas();
-  initNavbar();
-  initStatsCounters();
-  initServicesFilter();
-  initQuoteCalculator();
-  initTestimonialSlider();
-  initContactForm();
-  initScrollAnimations();
-  initBackToTop();
-});
+function initializeApp() {
+  try { initThemeToggle(); } catch (e) { console.error("Theme toggle error:", e); }
+  try { initHeroCanvas(); } catch (e) { console.error("Canvas error:", e); }
+  try { initNavbar(); } catch (e) { console.error("Navbar error:", e); }
+  try { initStatsCounters(); } catch (e) { console.error("Stats counter error:", e); }
+  try { initServicesFilter(); } catch (e) { console.error("Filter error:", e); }
+  try { initQuoteCalculator(); } catch (e) { console.error("Calculator error:", e); }
+  try { initTestimonialSlider(); } catch (e) { console.error("Testimonial slider error:", e); }
+  try { initContactForm(); } catch (e) { console.error("Contact form error:", e); }
+  try { initScrollAnimations(); } catch (e) { console.error("Scroll animation error:", e); }
+  try { initBackToTop(); } catch (e) { console.error("BackToTop error:", e); }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
 
 /* ==========================================================================
-   1. HERO CANVAS: DYNAMIC HYDRAULIC CIRCUIT & FLUID FLOW ANIMATION
+   1. THEME TOGGLE (LIGHT DEFAULT WITH OPTIONAL DARK MODE)
+   ========================================================================== */
+function initThemeToggle() {
+  const savedTheme = localStorage.getItem('techin_theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon(savedTheme);
+
+  const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('techin_theme', next);
+      updateThemeIcon(next);
+      showToast(`Switched to ${next.toUpperCase()} theme.`);
+    });
+  });
+
+  function updateThemeIcon(theme) {
+    toggleBtns.forEach(btn => {
+      if (theme === 'dark') {
+        btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
+        btn.setAttribute('aria-label', 'Switch to Light Theme');
+      } else {
+        btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+        btn.setAttribute('aria-label', 'Switch to Dark Theme');
+      }
+    });
+  }
+}
+
+/* ==========================================================================
+   2. HERO CANVAS: DYNAMIC HYDRAULIC CIRCUIT & SCHEMATIC FLOW
    ========================================================================== */
 function initHeroCanvas() {
   const canvas = document.getElementById('hero-canvas');
@@ -35,16 +76,16 @@ function initHeroCanvas() {
   function createNetwork() {
     nodes = [];
     particles = [];
-    const count = Math.floor(width / 130);
+    const count = Math.floor(width / 120);
     
     for (let i = 0; i < count; i++) {
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
         radius: Math.random() * 2 + 1.5,
-        type: Math.random() > 0.8 ? 'valve' : 'junction'
+        type: Math.random() > 0.75 ? 'valve' : 'junction'
       });
     }
 
@@ -54,8 +95,8 @@ function initHeroCanvas() {
         x: Math.random() * width,
         y: Math.random() * height,
         speed: Math.random() * 1.5 + 0.8,
-        size: Math.random() * 2 + 1,
-        color: Math.random() > 0.4 ? '#ff8400' : '#00b4d8'
+        size: Math.random() * 2.5 + 1,
+        color: Math.random() > 0.4 ? '#ea580c' : '#0284c7'
       });
     }
   }
@@ -64,7 +105,7 @@ function initHeroCanvas() {
     ctx.clearRect(0, 0, width, height);
 
     // Draw connecting schematic conduit lines
-    ctx.lineWidth = 0.8;
+    ctx.lineWidth = 0.9;
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
@@ -72,8 +113,8 @@ function initHeroCanvas() {
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < 180) {
-          const alpha = (1 - dist / 180) * 0.22;
-          ctx.strokeStyle = `rgba(0, 180, 216, ${alpha})`;
+          const alpha = (1 - dist / 180) * 0.25;
+          ctx.strokeStyle = `rgba(2, 132, 199, ${alpha})`;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -92,7 +133,7 @@ function initHeroCanvas() {
 
       ctx.beginPath();
       ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-      ctx.fillStyle = node.type === 'valve' ? 'rgba(255, 132, 0, 0.7)' : 'rgba(148, 163, 184, 0.4)';
+      ctx.fillStyle = node.type === 'valve' ? 'rgba(234, 88, 12, 0.75)' : 'rgba(100, 116, 139, 0.4)';
       ctx.fill();
     });
 
@@ -106,7 +147,7 @@ function initHeroCanvas() {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       ctx.fillStyle = p.color;
-      ctx.shadowBlur = 8;
+      ctx.shadowBlur = 6;
       ctx.shadowColor = p.color;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -121,17 +162,19 @@ function initHeroCanvas() {
 }
 
 /* ==========================================================================
-   2. NAVBAR STICKY, MOBILE MENU & SCROLLSPY
+   3. NAVBAR STICKY, MOBILE MENU, DROPDOWN & SCROLLSPY
    ========================================================================== */
 function initNavbar() {
   const header = document.querySelector('.site-header');
   const mobileBtn = document.querySelector('.mobile-toggle');
   const navLinks = document.querySelector('.nav-links');
-  const links = document.querySelectorAll('.nav-link');
+  const links = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdownMenu = document.querySelector('.dropdown-menu');
 
   // Sticky navbar shadow on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    if (window.scrollY > 40) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -144,23 +187,36 @@ function initNavbar() {
       navLinks.classList.toggle('active');
       const isOpen = navLinks.classList.contains('active');
       mobileBtn.innerHTML = isOpen ? 
-        `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>` : 
-        `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`;
+        `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>` : 
+        `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`;
     });
 
     // Close mobile menu on link click
-    links.forEach(link => {
+    const allMenuLinks = navLinks.querySelectorAll('a');
+    allMenuLinks.forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`;
+        if (window.innerWidth <= 860) {
+          navLinks.classList.remove('active');
+          mobileBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`;
+        }
       });
+    });
+  }
+
+  // Mobile touch support for dropdown toggle
+  if (dropdownToggle && dropdownMenu) {
+    dropdownToggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 860) {
+        e.preventDefault();
+        dropdownMenu.classList.toggle('show');
+      }
     });
   }
 
   // Active section scrollspy
   const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 140;
+    const scrollPos = window.scrollY + 160;
     sections.forEach(sec => {
       const top = sec.offsetTop;
       const height = sec.offsetHeight;
@@ -178,7 +234,7 @@ function initNavbar() {
 }
 
 /* ==========================================================================
-   3. ANIMATED NUMBER COUNTERS (INTERSECTION OBSERVER)
+   4. ANIMATED NUMBER COUNTERS (INTERSECTION OBSERVER)
    ========================================================================== */
 function initStatsCounters() {
   const statNumbers = document.querySelectorAll('.stat-number');
@@ -219,140 +275,247 @@ function initStatsCounters() {
 }
 
 /* ==========================================================================
-   4. SERVICES CATEGORY FILTER
+   5. SERVICES CATEGORY FILTER (TROUBLESHOOTING & REPAIR + REFURBISHMENT + RAILWAYS)
    ========================================================================== */
-function initServicesFilter() {
+window.filterServices = function(category) {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.service-card');
 
   filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+    if (btn.getAttribute('data-filter') === category) {
       btn.classList.add('active');
-      const category = btn.getAttribute('data-filter');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
 
-      cards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-        if (category === 'all' || cardCat.includes(category)) {
-          card.style.display = 'flex';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 50);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(15px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 250);
-        }
-      });
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-category') || '';
+    const cardPillar = card.getAttribute('data-pillar') || '';
+    const isMatch = (category === 'all' || cardCat.includes(category) || cardPillar.includes(category));
+
+    if (isMatch) {
+      card.classList.remove('filter-hidden');
+      card.style.display = 'flex';
+      card.style.opacity = '1';
+      card.style.visibility = 'visible';
+    } else {
+      card.classList.add('filter-hidden');
+      card.style.display = 'none';
+      card.style.opacity = '0';
+    }
+  });
+};
+
+function initServicesFilter() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const category = btn.getAttribute('data-filter') || 'all';
+      window.filterServices(category);
     });
   });
 }
 
 /* ==========================================================================
-   5. INTERACTIVE HYDRAULIC QUOTE ESTIMATOR
+   6. INTERACTIVE HYDRAULIC QUOTE ESTIMATOR & COST CALCULATOR
    ========================================================================== */
-function initQuoteCalculator() {
+window.calcSelectedScope = 'overhaul';
+window.calcSelectedPressure = '250';
+
+window.setCalcScope = function(btnEl, scope) {
+  window.calcSelectedScope = scope;
+  document.querySelectorAll('.calc-scope-chip').forEach(c => c.classList.remove('active'));
+  if (btnEl) {
+    btnEl.classList.add('active');
+  } else {
+    const matchingBtn = document.querySelector(`.calc-scope-chip[data-service="${scope}"]`);
+    if (matchingBtn) matchingBtn.classList.add('active');
+  }
+  window.calculateQuote();
+};
+
+window.setCalcPressure = function(btnEl, pressure) {
+  window.calcSelectedPressure = pressure;
+  document.querySelectorAll('.calc-pressure-chip').forEach(c => c.classList.remove('active'));
+  if (btnEl) {
+    btnEl.classList.add('active');
+  } else {
+    const matchingBtn = document.querySelector(`.calc-pressure-chip[data-pressure="${pressure}"]`);
+    if (matchingBtn) matchingBtn.classList.add('active');
+  }
+  window.calculateQuote();
+};
+
+window.calculateQuote = function() {
   const equipSelect = document.getElementById('calc-equipment');
-  const serviceChips = document.querySelectorAll('.calc-chip');
-  const estimateOutput = document.getElementById('calc-price-est');
+  const priceOutput = document.getElementById('calc-price-est');
+  const protocolOutput = document.getElementById('calc-protocol-est');
   const timeOutput = document.getElementById('calc-time-est');
-  const directQuoteBtn = document.getElementById('calc-apply-quote');
 
-  if (!equipSelect || !estimateOutput) return;
+  if (!equipSelect || !priceOutput) return;
 
-  let selectedService = 'overhaul';
+  const equipKey = equipSelect.value;
+  const scope = window.calcSelectedScope || 'overhaul';
+  const pressure = window.calcSelectedPressure || '250';
 
-  serviceChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      serviceChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      selectedService = chip.getAttribute('data-service');
-      recalculate();
-    });
-  });
+  const equipmentData = {
+    'cylinder-honing': { min: 18000, max: 42000, name: 'Hydraulic Cylinder & Piston Refurbishment / Honing' },
+    'axial-pump': { min: 28000, max: 68000, name: 'Hydraulic Pump & Motor Overhauling (Rexroth / Eaton / Parker)' },
+    'fault-diagnosis': { min: 12000, max: 28000, name: 'Mechanical, Hydraulic & Electrical Fault Diagnosis' },
+    'pressure-flow': { min: 15000, max: 35000, name: 'Hydraulic Pressure & Flow Problem Solving' },
+    'control-panels': { min: 16000, max: 40000, name: 'Electrical Control Panels, Sensors & Solenoids' },
+    'gearbox-drive': { min: 32000, max: 75000, name: 'Gearbox & Reduction Drive Overhauling / Shaft Reconditioning' },
+    'seal-kit': { min: 9500, max: 24000, name: 'Seal Kit Replacement & Hydraulic Seal Renewal' },
+    'power-pack': { min: 25000, max: 60000, name: 'Hydraulic Power Unit (HPU) / Integrated Manifold Block' },
+    'railway-jacks': { min: 48000, max: 110000, name: 'Indian Railways Bogie Lifting Jacks / Synchronized Rig' },
+    'railway-wheelpress': { min: 65000, max: 145000, name: 'Indian Railways Wheel-Axle Press Hydraulic System' },
+    'heavy-press': { min: 75000, max: 180000, name: 'Heavy Industrial Forging / Stamping Hydraulic Press (> 500T)' }
+  };
 
-  equipSelect.addEventListener('change', recalculate);
-
-  function recalculate() {
-    const equip = equipSelect.value;
-    let turnaround = '24–48 Hours';
-    let label = 'Comprehensive Overhaul & Hydrostatic Test';
-
-    if (selectedService === 'inspection') {
-      turnaround = 'Within 12–24 Hours';
-      label = 'Dimensional Metrology & NDT Testing';
-    } else if (selectedService === 'overhaul') {
-      turnaround = '3 to 5 Working Days';
-      label = 'Complete Rebuild, Lapping & Pressure Proofing';
-    } else if (selectedService === 'emergency') {
-      turnaround = 'Priority 24-Hour Emergency Bay';
-      label = 'Round-the-clock Emergency Overhaul Mobilization';
-    } else if (selectedService === 'amc') {
-      turnaround = 'Annual Scheduled & Preventive Matrix';
-      label = 'Yearly SLA with Dedicated Mobile Team';
+  const scopeData = {
+    'diagnostic': {
+      multiplier: 0.45,
+      time: 'Within 12–24 Hours',
+      protocol: 'Dynamic Sensor Profiling, Acoustic Cavitation & Megger Insulation Testing'
+    },
+    'overhaul': {
+      multiplier: 1.0,
+      time: '3 to 5 Working Days',
+      protocol: 'Precision Teardown, Honing/Lapping, Genuine Seal Renewal & Dynamic Proofing'
+    },
+    'emergency': {
+      multiplier: 1.35,
+      time: 'Priority 24-Hour Emergency Bay',
+      protocol: '24/7 Breakdown Bay Mobilization, Rapid Ultrasonic Cleaning & Emergency Rebuild'
+    },
+    'amc': {
+      multiplier: 1.5,
+      time: 'Scheduled Preventive SLA',
+      protocol: 'Annual Maintenance Contract SLA with Scheduled Vibration & Oil Analysis'
     }
+  };
 
-    if (equip.includes('railway')) {
-      turnaround += ' (RDSO Benchmarked)';
-    }
+  const pressureData = {
+    '250': { multiplier: 1.0, label: '250-Bar Proof Testing' },
+    '450': { multiplier: 1.15, label: '450-Bar High-Pressure Rig Verification' },
+    '700': { multiplier: 1.25, label: '700-Bar (10K PSI) Computer-Logged Proofing' }
+  };
 
-    estimateOutput.textContent = label;
-    if (timeOutput) timeOutput.textContent = turnaround;
+  const base = equipmentData[equipKey] || { min: 20000, max: 50000, name: 'Hydraulic Component' };
+  const sc = scopeData[scope] || scopeData['overhaul'];
+  const pr = pressureData[pressure] || pressureData['250'];
+
+  const minCost = Math.round((base.min * sc.multiplier * pr.multiplier) / 500) * 500;
+  const maxCost = Math.round((base.max * sc.multiplier * pr.multiplier) / 500) * 500;
+
+  let turnaround = sc.time;
+  if (equipKey.includes('railway')) {
+    turnaround += ' (RDSO Benchmarked)';
   }
 
-  // Hooking to form prefill
+  priceOutput.textContent = `₹${minCost.toLocaleString('en-IN')} – ₹${maxCost.toLocaleString('en-IN')}`;
+  if (protocolOutput) {
+    protocolOutput.textContent = `${sc.protocol} (${pr.label})`;
+  }
+  if (timeOutput) {
+    timeOutput.textContent = turnaround;
+  }
+};
+
+function initQuoteCalculator() {
+  const equipSelect = document.getElementById('calc-equipment');
+  const directQuoteBtn = document.getElementById('calc-apply-quote');
+
+  if (equipSelect) {
+    equipSelect.addEventListener('change', () => {
+      window.calculateQuote();
+    });
+  }
+
+  // Pre-fill Formal RFQ Form
   if (directQuoteBtn) {
     directQuoteBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      const currentEquip = document.getElementById('calc-equipment');
+      if (!currentEquip) return;
+
+      const equipName = currentEquip.options[currentEquip.selectedIndex].text;
+      const priceText = document.getElementById('calc-price-est')?.textContent || '';
       const serviceRequiredInput = document.getElementById('contact-service');
       const messageInput = document.getElementById('contact-message');
       const contactSection = document.getElementById('contact');
 
       if (serviceRequiredInput) {
-        serviceRequiredInput.value = equipSelect.options[equipSelect.selectedIndex].text;
+        serviceRequiredInput.value = equipName;
       }
       if (messageInput) {
-        messageInput.value = `Inquiry regarding ${equipSelect.options[equipSelect.selectedIndex].text} - Service Type: ${selectedService.toUpperCase()}. Please provide comprehensive quote and testing schedule.`;
+        messageInput.value = `Inquiry regarding ${equipName}\n- Service Scope: ${(window.calcSelectedScope || 'overhaul').toUpperCase()}\n- Pressure Proofing: ${window.calcSelectedPressure || '250'} Bar\n- Estimated Budget Bracket: ${priceText}\n\nPlease confirm workshop bay slot availability and formal engineering quotation.`;
       }
 
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
-        showToast(`Quote details pre-filled for ${equipSelect.options[equipSelect.selectedIndex].text}!`);
+        showToast(`Quote parameters pre-filled for ${equipName}!`);
       }
     });
   }
 
-  recalculate();
+  window.calculateQuote();
 }
 
+// Global delegated click listener as universal fallback
+document.addEventListener('click', (e) => {
+  const filterBtn = e.target.closest('.filter-btn');
+  if (filterBtn) {
+    e.preventDefault();
+    const cat = filterBtn.getAttribute('data-filter') || 'all';
+    window.filterServices(cat);
+    return;
+  }
+
+  const scopeChip = e.target.closest('.calc-scope-chip');
+  if (scopeChip) {
+    e.preventDefault();
+    const sc = scopeChip.getAttribute('data-service') || 'overhaul';
+    window.setCalcScope(scopeChip, sc);
+    return;
+  }
+
+  const pressChip = e.target.closest('.calc-pressure-chip');
+  if (pressChip) {
+    e.preventDefault();
+    const pr = pressChip.getAttribute('data-pressure') || '250';
+    window.setCalcPressure(pressChip, pr);
+    return;
+  }
+});
+
 /* ==========================================================================
-   6. TESTIMONIAL SLIDER CAROUSEL
+   7. TESTIMONIAL SLIDER CAROUSEL
    ========================================================================== */
 function initTestimonialSlider() {
   const testimonials = [
     {
-      text: "Techin Global overhauled our 450-Ton wheel demounting hydraulic press and bogie lifting units with utmost precision. Their hydrostatic test certification met Indian Railways RDSO standards flawlessly.",
+      text: "Techin Global overhauled our 450-Ton wheel demounting hydraulic press and synchronized bogie lifting jacks with utmost precision. Their hydrostatic test certification met Indian Railways RDSO standards flawlessly.",
       author: "Er. Rajesh K. Sharma",
       role: "Senior Section Engineer (Mechanical), Northern Railway Carriage & Wagon Workshop",
       avatar: "RS"
     },
     {
-      text: "We had a critical breakdown on our heavy stamping hydraulic press power pack. The Techin Global team mobilized within 4 hours, swapped radial piston seals, lapped spool valves, and eliminated machine downtime.",
+      text: "We had a critical breakdown on our heavy stamping hydraulic press power pack. The Techin Global team mobilized within 4 hours, diagnosed hydraulic pressure loss, renewed all seals, and eliminated machine downtime.",
       author: "Vikramaditya Rao",
       role: "VP Maintenance & Operations, Apex Heavy Forgings Ltd.",
       avatar: "VR"
     },
     {
-      text: "Outstanding expertise in hydraulic motors and proportional control valves. Their pressure testing bay capable of 700 Bar provides 100% confidence before equipment re-installation.",
+      text: "Outstanding expertise in hydraulic motor overhauling, barrel lapping, and electrical control systems. Their pressure testing bay capable of 700 Bar provides 100% confidence before equipment re-installation.",
       author: "Anand M. Pillai",
       role: "Chief Technical Officer, Southern Marine & Heavy Infrastructure",
       avatar: "AP"
     },
     {
-      text: "Servicing our track maintenance tamper hydraulics was completed in record time. Zero hydraulic fluid leakage and responsive post-delivery support across all our divisional sites.",
+      text: "Servicing our track maintenance tamper hydraulics was completed in record time. Zero hydraulic fluid leakage and responsive post-delivery support across all our divisional loco sheds.",
       author: "Sunil Verma",
       role: "Divisional Mechanical Engineer, Western Railway Loco Shed",
       avatar: "SV"
@@ -408,7 +571,7 @@ function initTestimonialSlider() {
 }
 
 /* ==========================================================================
-   7. CONTACT FORM SUBMISSION & QUICK ACTIONS
+   8. CONTACT FORM SUBMISSION
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('main-contact-form');
@@ -420,7 +583,6 @@ function initContactForm() {
     const name = document.getElementById('contact-name').value.trim();
     const email = document.getElementById('contact-email').value.trim();
     const phone = document.getElementById('contact-phone').value.trim();
-    const service = document.getElementById('contact-service').value;
 
     if (!name || !email || !phone) {
       showToast('Please fill out all required contact fields.', true);
@@ -433,8 +595,8 @@ function initContactForm() {
     submitBtn.disabled = true;
 
     setTimeout(() => {
-      submitBtn.innerHTML = `<span>✓ Inquiry Dispatched Successfully</span>`;
-      submitBtn.style.background = '#10b981';
+      submitBtn.innerHTML = `<span>✓ Inquiry Dispatched to Engineering Team</span>`;
+      submitBtn.style.background = '#059669';
       showToast(`Thank you ${name}! Our senior hydraulic engineers will contact you within 2 hours.`);
       form.reset();
 
@@ -448,7 +610,7 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   8. TOAST NOTIFICATION UTILITY
+   9. TOAST NOTIFICATION UTILITY
    ========================================================================== */
 function showToast(message, isError = false) {
   let toast = document.querySelector('.toast-notice');
@@ -473,7 +635,7 @@ function showToast(message, isError = false) {
 }
 
 /* ==========================================================================
-   9. SCROLL ANIMATIONS (INTERSECTION OBSERVER)
+   10. SCROLL ANIMATIONS (INTERSECTION OBSERVER)
    ========================================================================== */
 function initScrollAnimations() {
   const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -492,7 +654,7 @@ function initScrollAnimations() {
 }
 
 /* ==========================================================================
-   10. BACK TO TOP BUTTON
+   11. BACK TO TOP BUTTON
    ========================================================================== */
 function initBackToTop() {
   const btn = document.querySelector('.fab-back-to-top');
